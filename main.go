@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/duduling/learngo/accounts"
+	"github.com/duduling/learngo/mydict"
 )
 
 func main() {
@@ -16,4 +16,14 @@ func main() {
 	// }
 	// fmt.Println(account)
 	// #endregion
+
+	//  #region
+	dictionary := mydict.Dictionary{"first": "First word"}
+	definition, err := dictionary.Search("first")
+	if err != nil {
+		fmt.Println(err)
+	} else {
+		fmt.Println(definition)
+	}
+	//  #endregion
 }
