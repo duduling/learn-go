@@ -7,6 +7,13 @@ import (
 )
 
 func main() {
-	account := accounts.NewAccount("dudu")
-	fmt.Println(account)
+	// #region - Account Tutorial
+	// account := accounts.NewAccount("dudu")
+	// account.Deposit(10)
+	// err := account.Withdraw(10)
+	// if err != nil {
+	// 	fmt.Println(err)
+	// }
+	// fmt.Println(account)
+	// #endregion
 }
