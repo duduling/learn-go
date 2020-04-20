@@ -18,12 +18,18 @@ func main() {
 	// #endregion
 
 	//  #region
-	dictionary := mydict.Dictionary{"first": "First word"}
-	definition, err := dictionary.Search("first")
+	dictionary := mydict.Dictionary{}
+	word := "hello"
+	definition := "Greeting"
+	err := dictionary.Add(word, definition)
 	if err != nil {
 		fmt.Println(err)
-	} else {
-		fmt.Println(definition)
+	}
+	hello, _ := dictionary.Search(word)
+	fmt.Println("found", word, "definition:", hello)
+	err = dictionary.Add(word, definition)
+	if err != nil {
+		fmt.Println(err)
 	}
 	//  #endregion
 }
