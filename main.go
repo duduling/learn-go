@@ -1,25 +1,27 @@
 package main
 
 import (
-	"fmt"
+	"os"
 	"strings"
 
 	"github.com/duduling/learngo/scrapper"
 	"github.com/labstack/echo"
 )
 
+const fileName string = "jobs.csv"
+
 func handleHome(c echo.Context) error {
 	return c.File("index.html")
 }
 
 func handleScrap(c echo.Context) error {
+	defer os.Remove(fileName)
 	term := strings.ToLower(scrapper.CleanString(c.FormValue("term")))
-	fmt.Println(term)
-	return nil
+	scrapper.Scrape(term)
+	return c.Attachment(fileName, fileName)
 }
 
 func main() {
-	// scrapper.Scrape("term")
 	e := echo.New()
 	e.GET("/", handleHome)
 	e.POST("/scrape", handleScrap)
